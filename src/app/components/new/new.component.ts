@@ -6,7 +6,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   styleUrls: ['./new.component.css']
 })
 export class NewComponent implements OnInit {
-
+  public name=null;
   constructor() { }
 
   ngOnInit(): void {

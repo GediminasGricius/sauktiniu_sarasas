@@ -7,8 +7,8 @@
             <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div class="mb-3">
                     <label for="" class="form-label">Vardas</label>
-                    <input type="text" class="form-control" ngModel  name="name" required minlength="3" maxlength="8" #name="ngModel">
-                    <span *ngIf="!name.valid && name.touched">Vardas ne trumpesnis nei 3 simboliai ir ne ilgesnis nei simboliai</span> 
+                    <input type="text" class="form-control" [(ngModel)]="name"  name="name" required minlength="3" maxlength="8" #nameLR="ngModel">
+                    <span *ngIf="!nameLR.valid && nameLR.touched">Vardas ne trumpesnis nei 3 simboliai ir ne ilgesnis nei simboliai {{name}}</span> 
                   
                 </div>
                 <div class="mb-3">
