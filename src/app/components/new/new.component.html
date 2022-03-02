@@ -4,24 +4,27 @@
             Pridėti naują šauktinį
         </div>
         <div class="card-body">
-            <form>
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div class="mb-3">
                     <label for="" class="form-label">Vardas</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ngModel  name="name" required minlength="3" maxlength="8" #name="ngModel">
+                    <span *ngIf="!name.valid && name.touched">Vardas ne trumpesnis nei 3 simboliai ir ne ilgesnis nei simboliai</span> 
+                  
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Pavardė</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ngModel name="surname" required minlength="3" maxlength="8" #surname="ngModel">
+                    <span *ngIf="!surname.valid && surname.touched">Vardas ne trumpesnis nei 3 simboliai ir ne ilgesnis nei simboliai</span> 
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">El. pašto adresas</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ngModel name="email" required email>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Telefonas</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ngModel name="phone" >
                 </div>
-                <button class="btn btn-success">Pridėti</button>
+                <button class="btn btn-success" type="submit" [disabled]="!f.valid">Pridėti</button>
             </form>
         </div>
     </div>
