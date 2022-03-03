@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SauktiniaiService } from 'src/app/services/sauktiniai.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SauktiniaiService } from 'src/app/services/sauktiniai.service';
 })
 export class NewComponent implements OnInit {
   public name=null;
-  constructor(private sauktiniuService:SauktiniaiService) { }
+  constructor(private sauktiniuService:SauktiniaiService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +19,7 @@ export class NewComponent implements OnInit {
     let values=form.form.value;
     console.log(values.name);
     this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone)
-
+    this.router.navigate(["/"]);
   }
 
 }
