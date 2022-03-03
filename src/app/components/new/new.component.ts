@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { SauktiniaiService } from 'src/app/services/sauktiniai.service';
 
 @Component({
   selector: 'app-new',
@@ -7,14 +8,16 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class NewComponent implements OnInit {
   public name=null;
-  constructor() { }
+  constructor(private sauktiniuService:SauktiniaiService) { }
 
   ngOnInit(): void {
   }
 
   public onSubmit(form){
     console.log("SUBMIT FORM");
-    console.log(form);
+    let values=form.form.value;
+    console.log(values.name);
+    this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone)
 
   }
 

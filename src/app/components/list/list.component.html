@@ -17,12 +17,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Jonas</td>
-                        <td>Jonaitis</td>
-                        <td>jonaitis@one.lt</td>
-                        <td>+37067122222</td>
+                    <tr *ngFor="let sauktinis of sauktiniuSarasas; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{sauktinis.name}}</td>
+                        <td>{{sauktinis.surname}}</td>
+                        <td>{{sauktinis.email}}</td>
+                        <td>{{sauktinis.phone}}</td>
                         <td>
                             <a class="btn btn-primary" href="#">Redaguoti</a>
                         </td>
