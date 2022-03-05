@@ -14,7 +14,22 @@ export class ListComponent implements OnInit {
   constructor(private sauktiniuService:SauktiniaiService) { }
 
   ngOnInit(): void {
-    this.sauktiniuSarasas=this.sauktiniuService.sauktiniai;
+    //Kviečiame serviso metodą getSauktiniai, metodas gražins Observable 
+    //(t.y. objektą prie kurio galėsime prisiskirti f-jas kurios bus vykdomos tuomet kai bus gauti duomenys)
+    this.sauktiniuService.getSauktiniai()  
+    
+    //Su metodu subscribe galime priskirti f-ją kuri bus įvykdyta tuomet kai duomenys bus gauti
+    .subscribe(
+      // Lamda išraiška su kintamuoju response kuriame bus talpinami parsiusti duomenys
+      (response)=>{
+        //Parsiustus duomenis prisiskiriame komponento kitnamajam sauktiniuSarasas kurį atvaizduojame
+        this.sauktiniuSarasas=response;
+        console.log("Atvaizdavau duomenis");
+      }
+    );
+
+    console.log("Pabaigiau darba");
+    
   }
 
 }
