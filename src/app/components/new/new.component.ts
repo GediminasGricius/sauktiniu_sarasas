@@ -15,11 +15,13 @@ export class NewComponent implements OnInit {
   }
 
   public onSubmit(form){
-    console.log("SUBMIT FORM");
     let values=form.form.value;
-    console.log(values.name);
-    this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone)
-    this.router.navigate(["/"]);
+    this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone).subscribe(
+      (response)=>{
+        this.router.navigate(["/"]);
+      }
+    );
+    
   }
 
 }

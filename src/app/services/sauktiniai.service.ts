@@ -23,8 +23,13 @@ export class SauktiniaiService {
   }
 
   public addSauktinis(id, name, surname, email, phone){
-   
-    this.sauktiniai.push(new Sauktinis(id, name, surname, email, phone));
+    return this.http.post("http://localhost:8080/sauktiniai/", {
+      name:name,
+      surname:surname,
+      email:email,
+      phone:phone
+    });
+    
   }
 
 

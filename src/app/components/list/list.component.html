@@ -1,6 +1,16 @@
 
 <div class="col-md-12">
-    <div class="card">
+    
+    <div class="alert alert-info" *ngIf="isLoading && !isError">
+        Informacija kraunama, prašome palaukti
+    </div>
+
+    <div class="alert alert-danger" *ngIf="isError">
+        Įvyko klaida parsiunčiant duomenis
+    </div>
+
+    
+    <div class="card" *ngIf="!isLoading">
         <div class="card-header">
             Šauktinių sąrašas
         </div>
