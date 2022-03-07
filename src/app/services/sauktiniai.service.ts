@@ -31,6 +31,10 @@ export class SauktiniaiService {
     });
     
   }
+  //Metodas kuris paima iš HTTP vieną šauktinį pagal id ir gražina Observable
+  public getSauktinis(id){
+    return this.http.get<Sauktinis>("http://localhost:8080/sauktiniai/"+id);
+  }
 
 
 }

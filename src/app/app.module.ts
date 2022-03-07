@@ -7,17 +7,21 @@ import { HttpClientModule } from "@angular/common/http"
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
 import { NewComponent } from './components/new/new.component';
+import { UpdateComponent } from './components/update/update.component';
 
 const appRoutes:Routes=[
   { path:'', component:ListComponent },
-  { path:'new', component:NewComponent}
+  { path:'new', component:NewComponent},
+  { path:'update/:id', component:UpdateComponent},
+ 
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    NewComponent
+    NewComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
