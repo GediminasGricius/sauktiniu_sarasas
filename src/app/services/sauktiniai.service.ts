@@ -36,5 +36,19 @@ export class SauktiniaiService {
     return this.http.get<Sauktinis>("http://localhost:8080/sauktiniai/"+id);
   }
 
+  //Išsiųs duomenis į Spring tam kad šauktinis būtų atnaujintas
+  public updateSauktinis(id, name, surname, email, phone){
+    return this.http.patch("http://localhost:8080/sauktiniai/"+id, {
+      id:id,
+      name:name,
+      surname:surname,
+      email:email,
+      phone:phone
+    });
+  }
+
+  public deleteSauktinis(id){
+    return this.http.delete("http://localhost:8080/sauktiniai/"+id);
+  }
 
 }

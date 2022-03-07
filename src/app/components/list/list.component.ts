@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
 
   constructor(private sauktiniuService:SauktiniaiService) { }
 
-  ngOnInit(): void {
+  private loadSauktiniuSarasas(){
     //Kviečiame serviso metodą getSauktiniai, metodas gražins Observable 
     //(t.y. objektą prie kurio galėsime prisiskirti f-jas kurios bus vykdomos tuomet kai bus gauti duomenys)
     this.isLoading=true;
@@ -28,16 +28,23 @@ export class ListComponent implements OnInit {
       (response)=>{
         //Parsiustus duomenis prisiskiriame komponento kitnamajam sauktiniuSarasas kurį atvaizduojame
         this.sauktiniuSarasas=response;
-        console.log("Atvaizdavau duomenis");
+       
         this.isLoading=false;
       },
       (response)=>{
         this.isError=true;  
       }
     );
+  }
 
-    console.log("Pabaigiau darba");
-    
+  ngOnInit(): void {
+    this.loadSauktiniuSarasas();
+  }
+
+  public delete(id){
+    this.sauktiniuService.deleteSauktinis(id).subscribe((result)=>{
+      this.loadSauktiniuSarasas();
+    });
   }
 
 }

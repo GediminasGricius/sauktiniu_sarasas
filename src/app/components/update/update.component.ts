@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Sauktinis } from 'src/app/models/sauktinis.model';
 import { SauktiniaiService } from 'src/app/services/sauktiniai.service';
 
@@ -14,9 +14,10 @@ export class UpdateComponent implements OnInit {
   public surname;
   public phone;
   public email;
+  public old=new Sauktinis();
 
   //Pasiimame esamą kelią
-  constructor(private route:ActivatedRoute, private sauktiniaiService:SauktiniaiService) { }
+  constructor(private route:ActivatedRoute, private sauktiniaiService:SauktiniaiService, private router:Router) { }
 
   
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class UpdateComponent implements OnInit {
 
     //Paprašykime serviso kad jis užkrautu šauktinį ir mums atsiūstų Observable
     this.sauktiniaiService.getSauktinis(this.id).subscribe((sauktinis)=>{
+      this.old=sauktinis;
       this.name=sauktinis.name;
       this.surname=sauktinis.surname;
       this.email=sauktinis.email;
@@ -34,6 +36,9 @@ export class UpdateComponent implements OnInit {
   }
 
   public onSubmit(form){
+    this.sauktiniaiService.updateSauktinis(this.id,this.name,this.surname,this.email,this.phone).subscribe((sauktinis)=>{
+      this.router.navigate(["/"]);
+    });
 
   }
 

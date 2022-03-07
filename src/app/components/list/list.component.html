@@ -1,9 +1,10 @@
 
 <div class="col-md-12">
     
-    <div class="alert alert-info" *ngIf="isLoading && !isError">
-        Informacija kraunama, prašome palaukti
+    <div *ngIf="isLoading && !isError" class="text-center">
+        <img src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif">
     </div>
+    
 
     <div class="alert alert-danger" *ngIf="isError">
         Įvyko klaida parsiunčiant duomenis
@@ -34,7 +35,8 @@
                         <td>{{sauktinis.email}}</td>
                         <td>{{sauktinis.phone}}</td>
                         <td>
-                            <a class="btn btn-primary" [routerLink]="['/update',sauktinis.id]">Redaguoti</a>
+                            <a class="btn btn-primary" [routerLink]="['/update',sauktinis.id]">Redaguoti</a>&nbsp;
+                            <button type="button" class="btn btn-danger" (click)="delete(sauktinis.id)">Ištrinti</button>
                         </td>
                     </tr>
                 </tbody>
