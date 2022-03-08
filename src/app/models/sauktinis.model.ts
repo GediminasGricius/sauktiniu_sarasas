@@ -5,7 +5,8 @@ export class Sauktinis{
         public name?:string, 
         public surname?:string,
         public email?:string,
-        public phone?:string
+        public phone?:string,
+        public age?:string
         ){
    
     }

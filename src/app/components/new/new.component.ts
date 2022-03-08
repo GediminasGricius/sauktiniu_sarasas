@@ -16,7 +16,7 @@ export class NewComponent implements OnInit {
 
   public onSubmit(form){
     let values=form.form.value;
-    this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone).subscribe(
+    this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone, values.age).subscribe(
       (response)=>{
         this.router.navigate(["/"]);
       }

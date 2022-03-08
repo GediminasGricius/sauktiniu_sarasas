@@ -1,5 +1,8 @@
 <div class="col-md-12">
-    <div class="card">
+    
+    <div class="alert alert-danger mb-3" *ngIf="error!=null" [innerHTML]="error"></div>
+
+    <div class="card" *ngIf="!isNotFound">
         <div class="card-header">
             Šauktinio <strong>{{old.name}}</strong> redagavimas
         </div>
@@ -23,6 +26,10 @@
                 <div class="mb-3">
                     <label for="" class="form-label">Telefonas</label>
                     <input type="text" class="form-control" [(ngModel)]="phone" name="phone" >
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Amžius</label>
+                    <input type="text" class="form-control" [(ngModel)]="age" name="age" pattern="[0-9]*" >
                 </div>
                 <button class="btn btn-success" type="submit" [disabled]="!f.valid">Atnaujinti</button>
                 <a class="btn btn-info float-end" routerLink="/">Gryžti atgal</a>

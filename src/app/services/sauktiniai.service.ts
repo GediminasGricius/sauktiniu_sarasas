@@ -22,12 +22,13 @@ export class SauktiniaiService {
     
   }
 
-  public addSauktinis(id, name, surname, email, phone){
+  public addSauktinis(id, name, surname, email, phone, age){
     return this.http.post("http://localhost:8080/sauktiniai/", {
       name:name,
       surname:surname,
       email:email,
-      phone:phone
+      phone:phone,
+      age:age
     });
     
   }
@@ -37,13 +38,14 @@ export class SauktiniaiService {
   }
 
   //Išsiųs duomenis į Spring tam kad šauktinis būtų atnaujintas
-  public updateSauktinis(id, name, surname, email, phone){
+  public updateSauktinis(id, name, surname, email, phone, age){
     return this.http.patch("http://localhost:8080/sauktiniai/"+id, {
       id:id,
       name:name,
       surname:surname,
       email:email,
-      phone:phone
+      phone:phone,
+      age:age
     });
   }
 
