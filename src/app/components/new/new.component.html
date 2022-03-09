@@ -18,7 +18,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">El. pašto adresas</label>
-                    <input type="text" class="form-control" ngModel name="email" required email>
+                    <input type="text" class="form-control" [(ngModel)]="email" name="email" required email (keyup)="onEmailUpdate()" [ngClass]="{'error':!isEmailValid}">
+                    <span *ngIf="!isEmailValid">El. pašto adresas yra užimtas, įveskite kitą adresą</span>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Telefonas</label>
@@ -28,7 +29,7 @@
                     <label for="" class="form-label">Amžius</label>
                     <input type="text" class="form-control" ngModel name="age" >
                 </div>
-                <button class="btn btn-success" type="submit" [disabled]="!f.valid">Pridėti</button>
+                <button class="btn btn-success" type="submit" [disabled]="!f.valid || !isEmailValid">Pridėti</button>
             </form>
         </div>
     </div>

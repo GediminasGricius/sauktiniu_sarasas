@@ -9,6 +9,8 @@ import { SauktiniaiService } from 'src/app/services/sauktiniai.service';
 })
 export class NewComponent implements OnInit {
   public name=null;
+  public email=null;
+  public isEmailValid=true;
   constructor(private sauktiniuService:SauktiniaiService, private router:Router) { }
 
   ngOnInit(): void {
@@ -16,12 +18,29 @@ export class NewComponent implements OnInit {
 
   public onSubmit(form){
     let values=form.form.value;
-    this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone, values.age).subscribe(
+    this.sauktiniuService.isEmailAvailable(this.email).subscribe(
       (response)=>{
-        this.router.navigate(["/"]);
+        if (response==true){
+          this.sauktiniuService.addSauktinis(null,values.name,values.surname,values.email,values.phone, values.age).subscribe(
+            (response)=>{
+              this.router.navigate(["/"]);
+            }
+          );
+        }else{
+          this.isEmailValid=false;
+        }
       }
     );
-    
+  }
+
+  public onEmailUpdate(){
+    this.sauktiniuService.isEmailAvailable(this.email).subscribe(
+      (response)=>{
+        this.isEmailValid=response;
+        console.log( this.isEmailValid);
+      }
+    );
+
   }
 
 }

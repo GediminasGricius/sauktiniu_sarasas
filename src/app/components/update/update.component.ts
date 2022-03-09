@@ -18,6 +18,7 @@ export class UpdateComponent implements OnInit {
   public old=new Sauktinis();
   public error=null;
   public isNotFound=true;
+  public isEmailValid=true;
 
   //Pasiimame esamą kelią
   constructor(private route:ActivatedRoute, private sauktiniaiService:SauktiniaiService, private router:Router) { }
@@ -54,6 +55,16 @@ export class UpdateComponent implements OnInit {
     }, (response)=>{
       this.error="Įvyko klaida atnaujinant įrašą serveryje. Bandykite dar kartą: <br>Klaidos tekstas: <strong>"+response.error.name+"</strong>";
     });
+
+  }
+
+  public onEmailUpdate(){
+    this.sauktiniaiService.isEmailAvailable(this.email,this.id).subscribe(
+      (response)=>{
+        this.isEmailValid=response;
+        console.log( this.isEmailValid);
+      }
+    );
 
   }
 

@@ -53,4 +53,13 @@ export class SauktiniaiService {
     return this.http.delete("http://localhost:8080/sauktiniai/"+id);
   }
 
+  public isEmailAvailable(email, id?){
+    if (id==null){
+      return this.http.get<boolean>("http://localhost:8080/sauktiniai/email/"+email);
+    }else{
+      return this.http.get<boolean>("http://localhost:8080/sauktiniai/"+id+"/email/"+email);
+    }
+
+  }
+
 }
