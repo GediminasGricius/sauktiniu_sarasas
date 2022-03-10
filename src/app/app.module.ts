@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
 import { NewComponent } from './components/new/new.component';
 import { UpdateComponent } from './components/update/update.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { ListItemComponent } from './components/list/list-item/list-item.component';
 
 const appRoutes:Routes=[
   { path:'', component:ListComponent },
@@ -21,7 +23,9 @@ const appRoutes:Routes=[
     AppComponent,
     ListComponent,
     NewComponent,
-    UpdateComponent
+    UpdateComponent,
+    NavigationComponent,
+    ListItemComponent
   ],
   imports: [
     BrowserModule,

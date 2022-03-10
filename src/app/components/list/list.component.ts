@@ -41,10 +41,9 @@ export class ListComponent implements OnInit {
     this.loadSauktiniuSarasas();
   }
 
-  public delete(id){
-    this.sauktiniuService.deleteSauktinis(id).subscribe((result)=>{
-      this.loadSauktiniuSarasas();
-    });
+  afterDelete(){
+    this.loadSauktiniuSarasas();
   }
+  
 
 }

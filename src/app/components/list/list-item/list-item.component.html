@@ -1,0 +1,13 @@
+
+
+    <ul class="list-group" style="background-image: url('https://expertphotography.b-cdn.net/wp-content/uploads/2018/09/product-photography-types-water-bottle.jpg'); background-size: cover;">
+        <li class="list-group-item list-group-item-secondary"><b>Vardas:</b> {{sauktinis.name}}</li>
+        <li class="list-group-item list-group-item-danger"><b>Pavardė:</b> {{sauktinis.surname}} </li>
+        <li class="list-group-item list-group-item-warning"><b>Amžius:</b> {{sauktinis.age}}</li>
+        <li class="list-group-item"><b>Telefonas:</b> {{sauktinis.phone}}</li>
+        <li class="list-group-item"><b>El. paštas:</b> {{sauktinis.email}} </li>
+        <li class="list-group-item">
+            <a class="btn btn-primary" [routerLink]="['/update',sauktinis.id]">Redaguoti</a>&nbsp;<button type="button" class="btn btn-danger" (click)="delete(sauktinis.id)">Ištrinti</button>
+        </li>
+    </ul>
+    

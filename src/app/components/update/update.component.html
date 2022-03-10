@@ -10,7 +10,7 @@
             <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div class="mb-3">
                     <label for="" class="form-label">Vardas</label>
-                    <input type="text" class="form-control" [(ngModel)]="name"  name="name" required minlength="3" maxlength="8" #nameLR="ngModel">
+                    <input type="text" class="form-control" [(ngModel)]="name"  name="name" required minlength="3" maxlength="8" #nameLR="ngModel" >
                     <span *ngIf="!nameLR.valid && nameLR.touched">Vardas ne trumpesnis nei 3 simboliai ir ne ilgesnis nei simboliai {{name}}</span> 
                   
                 </div>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Amžius</label>
-                    <input type="text" class="form-control" [(ngModel)]="age" name="age" pattern="[0-9]*" >
+                    <input type="text" class="form-control" [(ngModel)]="age" name="age" pattern="[0-9]*"  >
                 </div>
                 <button class="btn btn-success" type="submit" [disabled]="!f.valid || !isEmailValid">Atnaujinti</button>
                 <a class="btn btn-info float-end" routerLink="/">Gryžti atgal</a>

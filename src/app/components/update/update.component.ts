@@ -50,6 +50,7 @@ export class UpdateComponent implements OnInit {
   }
 
   public onSubmit(form){
+   
     this.sauktiniaiService.updateSauktinis(this.id,this.name,this.surname,this.email,this.phone, this.age).subscribe((sauktinis)=>{
       this.router.navigate(["/"]);
     }, (response)=>{
