@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Sauktinis } from 'src/app/models/sauktinis.model';
 import { SauktiniaiService } from 'src/app/services/sauktiniai.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +15,12 @@ export class ListComponent implements OnInit {
   public isLoading=true;
   public isError=false;
 
-  constructor(private sauktiniuService:SauktiniaiService) { }
+  constructor(private sauktiniuService:SauktiniaiService, private user:UserService, private router:Router) {
+    if (!user.isLoggedIn()){
+      this.router.navigate(["/login"]);
+    }
+
+   }
 
   private loadSauktiniuSarasas(){
     //Kviečiame serviso metodą getSauktiniai, metodas gražins Observable 
@@ -32,6 +39,10 @@ export class ListComponent implements OnInit {
         this.isLoading=false;
       },
       (response)=>{
+        if (response.status==401){
+            this.user.logOut();
+        }
+        
         this.isError=true;  
       }
     );

@@ -10,11 +10,13 @@ import { NewComponent } from './components/new/new.component';
 import { UpdateComponent } from './components/update/update.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ListItemComponent } from './components/list/list-item/list-item.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes:Routes=[
   { path:'', component:ListComponent },
   { path:'new', component:NewComponent},
   { path:'update/:id', component:UpdateComponent},
+  { path:'login', component:LoginComponent}
  
 ]
 
@@ -25,7 +27,8 @@ const appRoutes:Routes=[
     NewComponent,
     UpdateComponent,
     NavigationComponent,
-    ListItemComponent
+    ListItemComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
