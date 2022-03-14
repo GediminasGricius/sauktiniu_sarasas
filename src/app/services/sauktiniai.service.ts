@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sauktinis } from '../models/sauktinis.model';
 
@@ -13,12 +13,16 @@ export class SauktiniaiService {
       */
     ];
 
+  private headers=new HttpHeaders({
+      authorization: 'Basic '+   btoa('gediminas:testas')  
+  });
+
   constructor(private http:HttpClient) { }
 
 
   public getSauktiniai(){   
     //Vykdoma užklausa ir grąžinamas observable
-    return this.http.get<Sauktinis[]>("http://localhost:8080/sauktiniai/");
+    return this.http.get<Sauktinis[]>("http://localhost:8080/sauktiniai/", {headers:this.headers} );
     
   }
 
