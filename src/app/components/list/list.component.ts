@@ -35,14 +35,9 @@ export class ListComponent implements OnInit {
       (response)=>{
         //Parsiustus duomenis prisiskiriame komponento kitnamajam sauktiniuSarasas kurį atvaizduojame
         this.sauktiniuSarasas=response;
-       
         this.isLoading=false;
       },
       (response)=>{
-        if (response.status==401){
-            this.user.logOut();
-        }
-        
         this.isError=true;  
       }
     );

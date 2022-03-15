@@ -13,4 +13,9 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onLogoutClick(){
+    console.log("Atsijungiu");
+    this.user.logOut();
+  }
+
 }
