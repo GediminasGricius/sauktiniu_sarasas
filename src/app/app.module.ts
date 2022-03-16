@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
@@ -11,6 +11,8 @@ import { UpdateComponent } from './components/update/update.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ListItemComponent } from './components/list/list-item/list-item.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { SauktiniaiService } from './services/sauktiniai.service';
 
 const appRoutes:Routes=[
   { path:'', component:ListComponent },
@@ -36,7 +38,14 @@ const appRoutes:Routes=[
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

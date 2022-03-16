@@ -31,7 +31,7 @@ export class SauktiniaiService {
 
   public getSauktiniai(){   
     //Vykdoma užklausa ir grąžinamas observable
-    return this.http.get<Sauktinis[]>("http://localhost:8080/sauktiniai/", {headers:this.user.getHeaders()} )
+    return this.http.get<Sauktinis[]>("http://localhost:8080/sauktiniai/")
       .pipe(catchError(this.checkLogin));
     
   }
@@ -43,13 +43,13 @@ export class SauktiniaiService {
       email:email,
       phone:phone,
       age:age
-    },{headers:this.user.getHeaders()})
+    })
       .pipe(catchError(this.checkLogin));
     
   }
   //Metodas kuris paima iš HTTP vieną šauktinį pagal id ir gražina Observable
   public getSauktinis(id){
-    return this.http.get<Sauktinis>("http://localhost:8080/sauktiniai/"+id, {headers:this.user.getHeaders()})
+    return this.http.get<Sauktinis>("http://localhost:8080/sauktiniai/"+id)
       .pipe(catchError(this.checkLogin));;
   }
 
@@ -62,21 +62,21 @@ export class SauktiniaiService {
       email:email,
       phone:phone,
       age:age
-    },{headers:this.user.getHeaders()})
+    })
       .pipe(catchError(this.checkLogin));;
   }
 
   public deleteSauktinis(id){
-    return this.http.delete("http://localhost:8080/sauktiniai/"+id, {headers:this.user.getHeaders()})
+    return this.http.delete("http://localhost:8080/sauktiniai/"+id)
       .pipe(catchError(this.checkLogin));;
   }
 
   public isEmailAvailable(email, id?){
     if (id==null){
-      return this.http.get<boolean>("http://localhost:8080/sauktiniai/email/"+email, {headers:this.user.getHeaders()})
+      return this.http.get<boolean>("http://localhost:8080/sauktiniai/email/"+email)
         .pipe(catchError(this.checkLogin));;
     }else{
-      return this.http.get<boolean>("http://localhost:8080/sauktiniai/"+id+"/email/"+email, {headers:this.user.getHeaders()})
+      return this.http.get<boolean>("http://localhost:8080/sauktiniai/"+id+"/email/"+email)
         .pipe(catchError(this.checkLogin));;
     }
 

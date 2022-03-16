@@ -17,8 +17,8 @@
         </ul>
         
       </div>
-      <div class="float-end" *ngIf="user.username!=null" >
-        Jūs esate prisijungęs kaip: {{user.username}}
+      <div class="float-end" *ngIf="user!=null" >
+        Jūs esate prisijungęs kaip: {{user.name}}
 
         <button (click)="onLogoutClick()">ATSIJUNGTI</button>
       </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,15 +8,19 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  public user:User;
 
-  constructor(public user:UserService) { }
+  constructor(public userService:UserService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.user=this.userService.user;
   }
 
   onLogoutClick(){
     console.log("Atsijungiu");
-    this.user.logOut();
+    this.userService.logOut();
   }
 
 }
