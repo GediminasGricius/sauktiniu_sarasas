@@ -13,8 +13,7 @@ export class ListItemComponent implements OnInit {
 
   constructor(private sauktiniuService:SauktiniaiService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public delete(id){
     this.sauktiniuService.deleteSauktinis(id).subscribe((result)=>{

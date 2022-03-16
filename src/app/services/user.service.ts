@@ -1,5 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 
@@ -11,16 +11,25 @@ export class UserService {
   public user:User=null;
   private loggedIn=false;
 
-  constructor(private router:Router) { }
+  public userUpdated=new EventEmitter<User>();
+
+  constructor(private router:Router) {   }
 
   public logIn(username, password){
     this.user=new User(username, password);
     this.loggedIn=true;
-    localStorage.setItem("user", JSON.stringify(this.user));
+    localStorage.setItem("user", btoa(JSON.stringify(this.user)));
+    
+    
+    this.userUpdated.emit(this.user);
   }
 
   public autoLogin(){
-    const user:User=JSON.parse(localStorage.getItem("user"));
+    if (!localStorage.getItem("user")){
+      return ;
+    }
+    
+    const user:User=JSON.parse( atob(localStorage.getItem("user")));
     //Patikrinam ar vartoto duomenys yra Localstorage
     if (!user){
       return ;
@@ -43,5 +52,6 @@ export class UserService {
     this.loggedIn=false;
     localStorage.removeItem("user");
     this.router.navigate(["/login"]);
+    this.userUpdated.emit(this.user);
   }
 }

@@ -16,6 +16,9 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
     this.user=this.userService.user;
+    this.userService.userUpdated.subscribe((user:User)=>{
+      this.user=user;
+    });
   }
 
   onLogoutClick(){

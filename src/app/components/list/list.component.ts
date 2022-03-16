@@ -15,12 +15,7 @@ export class ListComponent implements OnInit {
   public isLoading=true;
   public isError=false;
 
-  constructor(private sauktiniuService:SauktiniaiService, private user:UserService, private router:Router) {
-    if (!user.isLoggedIn()){
-      this.router.navigate(["/login"]);
-    }
-
-   }
+  constructor(private sauktiniuService:SauktiniaiService, private user:UserService, private router:Router) {   }
 
   private loadSauktiniuSarasas(){
     //Kviečiame serviso metodą getSauktiniai, metodas gražins Observable 
