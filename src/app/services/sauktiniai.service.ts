@@ -31,13 +31,13 @@ export class SauktiniaiService {
 
   public getSauktiniai(){   
     //Vykdoma užklausa ir grąžinamas observable
-    return this.http.get<Sauktinis[]>("http://localhost:8080/sauktiniai/")
+    return this.http.get<Sauktinis[]>("http://laiskutis.lt/sauktiniai/")
       .pipe(catchError(this.checkLogin));
     
   }
 
   public addSauktinis(id, name, surname, email, phone, age){
-    return this.http.post("http://localhost:8080/sauktiniai/", {
+    return this.http.post("http://laiskutis.lt/sauktiniai/", {
       name:name,
       surname:surname,
       email:email,
@@ -49,13 +49,13 @@ export class SauktiniaiService {
   }
   //Metodas kuris paima iš HTTP vieną šauktinį pagal id ir gražina Observable
   public getSauktinis(id){
-    return this.http.get<Sauktinis>("http://localhost:8080/sauktiniai/"+id)
+    return this.http.get<Sauktinis>("http://laiskutis.lt/sauktiniai/"+id)
       .pipe(catchError(this.checkLogin));;
   }
 
   //Išsiųs duomenis į Spring tam kad šauktinis būtų atnaujintas
   public updateSauktinis(id, name, surname, email, phone, age){
-    return this.http.patch("http://localhost:8080/sauktiniai/"+id, {
+    return this.http.patch("http://laiskutis.lt/sauktiniai/"+id, {
       id:id,
       name:name,
       surname:surname,
@@ -67,16 +67,16 @@ export class SauktiniaiService {
   }
 
   public deleteSauktinis(id){
-    return this.http.delete("http://localhost:8080/sauktiniai/"+id)
+    return this.http.delete("http://laiskutis.lt/sauktiniai/"+id)
       .pipe(catchError(this.checkLogin));;
   }
 
   public isEmailAvailable(email, id?){
     if (id==null){
-      return this.http.get<boolean>("http://localhost:8080/sauktiniai/email/"+email)
+      return this.http.get<boolean>("http://laiskutis.lt/sauktiniai/email/"+email)
         .pipe(catchError(this.checkLogin));;
     }else{
-      return this.http.get<boolean>("http://localhost:8080/sauktiniai/"+id+"/email/"+email)
+      return this.http.get<boolean>("http://laiskutis.lt/sauktiniai/"+id+"/email/"+email)
         .pipe(catchError(this.checkLogin));;
     }
 
